@@ -1,0 +1,39 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/gordon/.emacs.d/" . ".cask/")
+ ("/home/gordon/" . ".emacs.d/")
+ ("/home/gordon/dev/" . "ruby/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/gordon/.emacs.d/"
+ "/home/gordon/archlinux-themes-sddm/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+ "Cask"
+ "PKGBUILD"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/gordon/.emacs.d/" (22880 48768 176666 666000) "../" "ido.last" "auto-save-list/" "common.el" "snippets/" "Cask" "projectile-bookmarks.eld" "init.el" ".cask/" "backups/" "./")
+
+ ("/home/gordon/" (22880 42182 710000 0) ".Xauthority" "../" ".cache/" ".vboxclient-clipboard.pid" ".bash_profile" ".vim/" ".python_history" ".lesshst" "dev/" "Desktop/" ".local/" ".config/" ".vboxclient-draganddrop.pid" ".vboxclient-display.pid" "Shared/" ".emacs.d/" ".gtkrc-2.0" ".bashrc" "Downloads/" "obapps-0.1.7/" ".cask/" ".viminfo" "./" ".mozilla/" ".icons/" ".bash_history" ".bash_logout" ".vboxclient-seamless.pid" ".esd_auth" ".gnupg/")
+
+ ("/home/gordon/.emacs.d/.cask/" (22858 42027 702747 52000) "./" "../" "25.2/")
+
+ ("/home/gordon/archlinux-themes-sddm/" (22858 34458 426455 0) "PKGBUILD" "archlinux-themes-sddm-2.0-1-any.pkg.tar.xz" "archlinux-themes-sddm.install" ".SRCINFO" ".git/" "./" "../" "pkg/" "src/" "archlinux-themes-sddm-2.0.tar.bz2")
+
+ ("/home/gordon/dev/" (22858 37689 571690 386000) "ruby/" "./" "../")
+
+ ("/home/gordon/dev/ruby/" (22859 430 699413 719000) "test.el" "test.c" "test.el~" "test.rb~" "./" "../" "#test.c#" "test.c~" "#test.el#" "test.rb" "test")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
