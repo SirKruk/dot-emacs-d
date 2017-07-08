@@ -28,6 +28,15 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "darkblue")
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook
+  '(lambda() (set-fill-column 80)))
+
+
 (require 'better-defaults)
 (setq inhibit-splash-screen t
       initial-scratch-message nil)
@@ -151,7 +160,7 @@
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c < >") 'mc/mark-all-like-this)
 
 
 (global-set-key "\C-cd" 'zeal-at-point)
@@ -207,3 +216,7 @@
        (setq      comint-scroll-show-maximum-output t)
        (setq      comint-input-autoexpand nil))
 (add-hook 'inferior-sml-mode-hook 'my-inf-sml-mode-hook)
+
+
+(load "~/.emacs.d/defs-lisp.el")
+

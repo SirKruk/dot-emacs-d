@@ -3,6 +3,8 @@
 (source marmalade)
 (source org)
 
+(depends-on "org-plus-contrib")
+
 (depends-on "async")
 (depends-on "bind-key")
 (depends-on "cask")
@@ -69,5 +71,4 @@
 (depends-on "smart-mode-line")
 (depends-on "sml-mode")
 (depends-on "magit")
-(depends-on "org-plus-contrib")
-
+(depends-on "fill-column-indicator")

@@ -4,9 +4,11 @@
 # Packaging
 .cask
 
-# Backup files
+# Auto-generated files
 *~
 backups
+projectile-bookmarks.eld
+ido.last
 
 # Undo-tree save-files
 *.~undo-tree
