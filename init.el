@@ -32,9 +32,12 @@
 (require 'fill-column-indicator)
 (setq fci-rule-width 1)
 (setq fci-rule-color "darkblue")
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook
-  '(lambda() (set-fill-column 80)))
+(dolist (hook '(text-mode-hook sml-mode-hook emacs-lisp-mode-hook ruby-mode-hook enh-ruby-mode-hook))
+  (add-hook hook 'turn-on-auto-fill))
+(dolist (hook '(text-mode-hook sml-mode-hook emacs-lisp-mode-hook ruby-mode-hook enh-ruby-mode-hook))
+  (add-hook hook '(lambda() (set-fill-column 80))))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
 (require 'better-defaults)
@@ -89,7 +92,7 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'smartparens-config)
-(dolist (hook '(ruby-mode-hook enh-ruby-mode-hook c-mode-hook js-mode-hook))
+(dolist (hook '(ruby-mode-hook enh-ruby-mode-hook c-mode-hook js-mode-hook sml-mode-hook))
   (add-hook hook 'smartparens-mode))
 
 (require 'yard-mode)
@@ -124,10 +127,10 @@
 
 (company-quickhelp-mode 1)
 
+(require 'seeing-is-believing)
 (setq seeing-is-believing-prefix "C-.")
 (add-hook 'ruby-mode-hook 'seeing-is-believing)
 (add-hook 'enh-ruby-mode-hook 'seeing-is-believing)
-(require 'seeing-is-believing)
 
 
 
@@ -219,4 +222,3 @@
 
 
 (load "~/.emacs.d/defs-lisp.el")
-
