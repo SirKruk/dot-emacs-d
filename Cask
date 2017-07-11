@@ -72,3 +72,4 @@
 (depends-on "sml-mode")
 (depends-on "magit")
 (depends-on "fill-column-indicator")
+(depends-on "whitespace-cleanup-mode")

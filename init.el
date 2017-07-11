@@ -12,9 +12,11 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+    ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e"
+     default)))
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (package-build shut-up epl git commander f dash s)))
+ '(package-selected-packages
+   (quote (package-build shut-up epl git commander f dash s)))
  '(show-paren-mode t))
 
 (custom-set-faces
@@ -32,12 +34,23 @@
 (require 'fill-column-indicator)
 (setq fci-rule-width 1)
 (setq fci-rule-color "darkblue")
-(dolist (hook '(text-mode-hook sml-mode-hook emacs-lisp-mode-hook ruby-mode-hook enh-ruby-mode-hook))
+(dolist (hook '(text-mode-hook sml-mode-hook emacs-lisp-mode-hook ruby-mode-hook
+                               enh-ruby-mode-hook))
   (add-hook hook 'turn-on-auto-fill))
-(dolist (hook '(text-mode-hook sml-mode-hook emacs-lisp-mode-hook ruby-mode-hook enh-ruby-mode-hook))
+(dolist (hook '(text-mode-hook sml-mode-hook emacs-lisp-mode-hook ruby-mode-hook
+                               enh-ruby-mode-hook))
   (add-hook hook '(lambda() (set-fill-column 80))))
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; TODO: save actions?
+;;(dolist (hook '(text-mode-hook sml-mode-hook emacs-lisp-mode-hook ruby-mode-hook
+;;                               enh-ruby-mode-hook org-mode-hook))
+;;  (add-hook hook 'whitespace-cleanup-mode))
+(global-whitespace-cleanup-mode 1)
+;; as per https://github.com/bbatsov/ruby-style-guide#two-or-more-empty-lines
+(add-hook 'enh-ruby-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'delete-blank-lines)))
 
 
 (require 'better-defaults)
@@ -55,8 +68,11 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 ;; Display ido results vertically, rather than horizontally
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
+(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]"
+                              " [No match]" " [Matched]" " [Not readable]"
+                              " [Too big]" " [Confirm]")))
+(defun ido-disable-line-truncation ()
+  (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
 (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
   (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
@@ -92,7 +108,8 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'smartparens-config)
-(dolist (hook '(ruby-mode-hook enh-ruby-mode-hook c-mode-hook js-mode-hook sml-mode-hook))
+(dolist (hook '(ruby-mode-hook enh-ruby-mode-hook c-mode-hook js-mode-hook
+                               sml-mode-hook))
   (add-hook hook 'smartparens-mode))
 
 (require 'yard-mode)
@@ -152,11 +169,11 @@
 
 
 (add-to-list 'auto-mode-alist
-	     '("\\.\\(?:cap\\|gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\)\\'"
-	       . enh-ruby-mode))
+             '("\\.\\(?:cap\\|gemspec\\|irbrc\\|gemrc\\|rake\\|rb\\|ru\\|thor\\)\\'"
+               . enh-ruby-mode))
 (add-to-list 'auto-mode-alist
-	     '("\\(?:Brewfile\\|Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'"
-	       . enh-ruby-mode))
+             '("\\(?:Brewfile\\|Capfile\\|Gemfile\\(?:\\.[a-zA-Z0-9._-]+\\)?\\|[rR]akefile\\)\\'"
+               . enh-ruby-mode))
 
 
 (require 'multiple-cursors)
@@ -176,7 +193,8 @@
 (sml/setup)
 
 (require 'all-the-icons)
-;; it is very important that you install the Resource Fonts included in this package
+;; it is very important that you install the Resource Fonts included in this
+;; package
 ;; M-x all-the-icons-install-fonts
 
 (require 'neotree)
