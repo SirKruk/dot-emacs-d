@@ -10,6 +10,7 @@ backups
 projectile-bookmarks.eld
 ido.last
 .mc-lists.el
+.emacs.desktop
 
 # Undo-tree save-files
 *.~undo-tree

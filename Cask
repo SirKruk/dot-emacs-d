@@ -73,3 +73,8 @@
 (depends-on "magit")
 (depends-on "fill-column-indicator")
 (depends-on "whitespace-cleanup-mode")
+(depends-on "anaconda-mode")
+(depends-on "scala-mode")
+(depends-on "elpy")
+(depends-on "visual-regexp")
+(depends-on "visual-regexp-steroids")

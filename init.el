@@ -182,6 +182,12 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c < >") 'mc/mark-all-like-this)
 
+(require 'visual-regexp-steroids)
+(define-key global-map (kbd "C-c r") 'vr/replace)
+(define-key global-map (kbd "C-c q") 'vr/query-replace)
+;; if you use multiple-cursors, this is for you:
+(define-key global-map (kbd "C-c m") 'vr/mc-mark)
+
 
 (global-set-key "\C-cd" 'zeal-at-point)
 
@@ -238,5 +244,32 @@
        (setq      comint-input-autoexpand nil))
 (add-hook 'inferior-sml-mode-hook 'my-inf-sml-mode-hook)
 
+;; Cool programing language mode
+(define-derived-mode my-cool-mode scala-mode
+  "cool"
+  "Cool programming language")
+(add-to-list 'auto-mode-alist '("\\.cl\\'" . my-cool-mode))
+
+;; Flex mode
+(define-derived-mode my-flex-mode c-mode "Lex" "F/Lex")
+(add-to-list 'auto-mode-alist '("\\.flex\\'" . my-flex-mode))
+
+(setq flycheck-global-modes '(or (not my-cool-mode) (not my-flex-mode)))
 
 (load "~/.emacs.d/defs-lisp.el")
+
+(desktop-save-mode 1)
+
+;;; scroll by `number-of-lines' without the cursor attached to the screen
+(global-set-key [M-up] (lambda () (interactive) (let ((number-of-lines 1))
+                                                     (scroll-down number-of-lines)
+                                                     (forward-line (- number-of-lines)))))
+(global-set-key [M-down] (lambda () (interactive) (let ((number-of-lines 1))
+                                                    (scroll-up number-of-lines)
+                                                    (forward-line number-of-lines))))
+
+;;; scroll by `number-of-lines' with the cursor attached to the screen
+(global-set-key [S-M-up] (lambda () (interactive) (let ((number-of-lines 1))
+                                                       (scroll-down number-of-lines))))
+(global-set-key [S-M-down] (lambda () (interactive) (let ((number-of-lines 1))
+                                                      (scroll-up number-of-lines))))
