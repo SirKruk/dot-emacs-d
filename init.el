@@ -273,3 +273,7 @@
                                                        (scroll-down number-of-lines))))
 (global-set-key [S-M-down] (lambda () (interactive) (let ((number-of-lines 1))
                                                       (scroll-up number-of-lines))))
+;; racket
+(setq geiser-active-implementations '(racket))
+(setq geiser-repl-query-on-kill-p nil)
+(require 'quack)

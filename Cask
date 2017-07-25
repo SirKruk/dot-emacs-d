@@ -78,3 +78,6 @@
 (depends-on "elpy")
 (depends-on "visual-regexp")
 (depends-on "visual-regexp-steroids")
+(depends-on "visual-regexp-steroids")
+(depends-on "geiser")
+(depends-on "quack")
