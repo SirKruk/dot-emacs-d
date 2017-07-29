@@ -1,0 +1,15 @@
+alias cp cp -i $*
+alias df df -h $*
+alias egrep egrep --colour=auto $*
+alias emacs emacs -mm $*
+alias fgrep fgrep --colour=auto $*
+alias free free -m $*
+alias grep grep --colour=auto $*
+alias ln ln -v $*
+alias ls ls -alF --color=auto $*
+alias more less $*
+alias np nano -w PKGBUILD $*
+alias rm rm -v $*
+alias rmdir rmdir -v $*
+alias sbt TERM=xterm-color sbt $*
+alias scala TERM=xterm-color scala $*
