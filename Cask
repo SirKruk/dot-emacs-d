@@ -87,3 +87,4 @@
 (depends-on "color-theme-sanityinc-tomorrow")
 (depends-on "ample-theme")
 (depends-on "zenburn-theme")
+(depends-on "misc-cmds")

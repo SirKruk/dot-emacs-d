@@ -64,6 +64,7 @@
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
+ '(quack-default-program "racket")
  '(show-paren-mode t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(split-width-threshold 1)
@@ -296,7 +297,7 @@
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
 ;; may have their own settings.
-(load-theme 'doom-one t)
+;(load-theme 'doom-one t)
 ;; Enable flashing mode-line on errors
 (doom-themes-visual-bell-config)
 ;; Enable custom neotree theme
@@ -359,5 +360,8 @@
 (setq geiser-repl-query-on-kill-p nil)
 (require 'quack)
 
-(global-set-key (kbd "C-\.") 'other-window)
+;(global-set-key (kbd "C-\.") 'other-window)
 (global-set-key (kbd "C-,") (lambda () (interactive) (other-window -1)))
+(global-set-key (kbd "M-[") 'previous-buffer)
+(global-set-key (kbd "M-]") 'next-buffer)
+(setq next-line-add-newlines t)

@@ -11,6 +11,7 @@ projectile-bookmarks.eld
 ido.last
 .mc-lists.el
 .emacs.desktop
+eshell/history
 
 # Undo-tree save-files
 *.~undo-tree
