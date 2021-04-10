@@ -2,8 +2,10 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+
 (package-initialize)
 
+(setq warning-suppress-log-types '((package reinitialization)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -231,6 +233,13 @@
 (add-hook 'ruby-mode-hook 'seeing-is-believing)
 (add-hook 'enh-ruby-mode-hook 'seeing-is-believing)
 
+;; irony
+;(add-hook 'c++-mode-hook 'irony-mode)
+;(add-hook 'c-mode-hook 'irony-mode)
+;(add-hook 'objc-mode-hook 'irony-mode)
+;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;(eval-after-load 'company
+;  '(add-to-list 'company-backends 'company-irony))
 
 
 (set-frame-font "Anonymous Pro 18")
@@ -358,10 +367,36 @@
 ;; racket
 (setq geiser-active-implementations '(racket))
 (setq geiser-repl-query-on-kill-p nil)
-(require 'quack)
+;(require 'quack)
 
 ;(global-set-key (kbd "C-\.") 'other-window)
 (global-set-key (kbd "C-,") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "M-[") 'previous-buffer)
 (global-set-key (kbd "M-]") 'next-buffer)
 (setq next-line-add-newlines t)
+
+;; Makes *scratch* empty.
+(setq initial-scratch-message "")
+
+;; Removes *scratch* from buffer after the mode has been set.
+(defun remove-scratch-buffer ()
+  (if (get-buffer "*scratch*")
+      (kill-buffer "*scratch*")))
+(add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
+
+;; Removes *messages* from the buffer.
+(setq-default message-log-max nil)
+(kill-buffer "*Messages*")
+
+;; Removes *Completions* from buffer after you've opened a file.
+(add-hook 'minibuffer-exit-hook
+      '(lambda ()
+         (let ((buffer "*Completions*"))
+           (and (get-buffer buffer)
+                (kill-buffer buffer)))))
+
+;; Don't show *Buffer list* when opening multiple files at the same time.
+(setq inhibit-startup-buffer-menu t)
+
+;; Show only one active window when opening multiple files at the same time.
+(add-hook 'window-setup-hook 'delete-other-windows)

@@ -12,6 +12,15 @@ ido.last
 .mc-lists.el
 .emacs.desktop
 eshell/history
+.emacs.desktop.lock
 
 # Undo-tree save-files
 *.~undo-tree
+
+# ?
+elpa
+history
+irony
+network-security.data
+places
+transient
